@@ -1,0 +1,4 @@
+target/
+project.db
+data/summaries/*.txt
+.DS_Store
