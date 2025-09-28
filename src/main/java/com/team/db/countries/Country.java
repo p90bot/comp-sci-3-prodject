@@ -1,4 +1,4 @@
-package com.team.countries;
+package com.team.db.countries;
 
 public class Country {
     public final String cca2;       // country code
