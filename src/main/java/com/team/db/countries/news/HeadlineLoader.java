@@ -1,4 +1,4 @@
-package com.team.news;
+package com.team.db.countries.news;
 
 import com.team.db.Database;
 import java.net.http.*;
