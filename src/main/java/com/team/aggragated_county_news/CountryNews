@@ -1,0 +1,62 @@
+package com.team.aggragated_county_news;
+
+public class CountryNews {
+    private String country;
+    private String headline;
+    private String content;
+
+    public static void main(String[] args) throws Exception {
+        // You need to write code here that will combine data from Country and Headline classes
+        //  and populate the CountryNews class with that data.
+    } 
+
+    // Basic no-arg constructor
+    public CountryNews() {
+    }
+
+    // Convenience constructor
+    public CountryNews(String country, String headline, String content) {
+        this.country = country;
+        this.headline = headline;
+        this.content = content;
+    }
+
+    // Getters and setters
+    public String getCountry() {
+        //
+        //  You're going to have to add code that will get the country based on whatever the data is in the country database
+        //  something like "Get news for country that has the most population" since you have only country population in the database
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getHeadline() {
+        //
+        //  You need to write code here that will fetch headline news based on country
+        return headline;
+    }
+
+    public void setHeadline(String headline) {
+        this.headline = headline;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "CountryNews{" +
+                "country='" + country + '\'' +
+                ", headline='" + headline + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
+}

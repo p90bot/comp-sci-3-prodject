@@ -1,4 +1,4 @@
-package com.team.db.countries;
+package com.team.countries;
 
 import com.team.db.Database;
 import java.net.http.*;

@@ -1,4 +1,4 @@
-package com.team.db.countries.news;
+package com.team.news;
 
 public class Headline {
     public final String country;   // country code

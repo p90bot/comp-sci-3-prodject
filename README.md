@@ -47,16 +47,16 @@ cd comp-sci-3-project
 mvn compile
 
 ### 3. Create the database
-mvn exec:java -Dexec.mainClass="com.team.db.RunSql" -Dexec.args="sql/create_countries.sql"
-mvn exec:java -Dexec.mainClass="com.team.db.RunSql" -Dexec.args="sql/create_headlines.sql"
+mvn exec:java -D"exec.mainClass"="com.team.db.RunSql" -D"exec.args"="sql/create_countries.sql"
+mvn exec:java -D"exec.mainClass"="com.team.db.RunSql" -D"exec.args"="sql/create_headlines.sql"
 
 ### 4. Load data
-mvn exec:java -Dexec.mainClass="com.team.countries.CountryLoader"
-mvn exec:java -Dexec.mainClass="com.team.news.HeadlineLoader"
+mvn exec:java -D"exec.mainClass"="com.team.countries.CountryLoader"
+mvn exec:java -D"exec.mainClass"="com.team.news.HeadlineLoader"
 
 ### 5. Verify data
-mvn exec:java -Dexec.mainClass="com.team.countries.CountryVerifier"
-mvn exec:java -Dexec.mainClass="com.team.news.HeadlineVerifier"
+mvn exec:java -D"exec.mainClass"="com.team.countries.CountryVerifier"
+mvn exec:java -D"exec.mainClass"="com.team.news.HeadlineVerifier"
 
 ### 6. Inspect database manually
 sqlite3 project.db
@@ -67,3 +67,5 @@ SELECT COUNT(*) FROM country_headlines;
 
 
 After running these steps, you should see **countries** and **headlines** tables populated with API data, along with matching summary verification.
+
+mvn exec:java -D"exec.mainClass"="com.team.aggragated_county_news.CountryNews" -D"exec.args"="news_from_max_pop_country"
