@@ -7,11 +7,26 @@
 - Myles 
 
 ## Dependencies
-- Java 17+  
-- Maven  
-- SQLite3  
+- Java 21 (LTS)
+- Maven
+- SQLite3
 
-Make sure these are installed before running the project.
+This project now targets Java 21. If you're on macOS you can install a matching JDK with Homebrew or Adoptium.
+
+Example (macOS, zsh):
+
+```bash
+# install latest Temurin JDK 21 via Homebrew
+brew install --cask temurin21
+
+# verify java version
+java -version
+
+# build
+mvn -T 1C clean package
+```
+
+If you prefer another distribution (Adoptium, Azul, Oracle), install a Java 21 JDK and make sure `java` and `javac` point to it.
 
 ## Project Structure
 comp-sci-3-project/

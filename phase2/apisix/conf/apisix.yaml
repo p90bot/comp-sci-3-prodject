@@ -1,0 +1,8 @@
+routes: []
+services: []
+upstreams: []
+plugin_configurations: []
+plugin_metadata: {}
+consumer_groups: []
+consumers: []
+ssl: []
