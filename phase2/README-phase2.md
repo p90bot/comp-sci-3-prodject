@@ -38,3 +38,5 @@ After running, each API will display:
 Data API server running on http://localhost:7001
 Class API server running on http://localhost:7002
 UI API server running on http://localhost:7003
+
+> Note: Tested the APIs locally on Windows 11 with Java 21 and confirmed all three endpoints are running.
