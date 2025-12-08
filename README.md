@@ -55,32 +55,80 @@ comp-sci-3-project/
 ## Quickstart
 
 ### 1. Clone the repo
+```bash
 git clone https://github.com/<team-repo>/comp-sci-3-project.git
 cd comp-sci-3-project
+```
 
 ### 2. Build the project
+```bash
 mvn compile
+```
 
 ### 3. Create the database
+```bash
 mvn exec:java -D"exec.mainClass"="com.team.db.RunSql" -D"exec.args"="sql/create_countries.sql"
 mvn exec:java -D"exec.mainClass"="com.team.db.RunSql" -D"exec.args"="sql/create_headlines.sql"
+```
 
 ### 4. Load data
+```bash
 mvn exec:java -D"exec.mainClass"="com.team.countries.CountryLoader"
 mvn exec:java -D"exec.mainClass"="com.team.news.HeadlineLoader"
+```
 
 ### 5. Verify data
+```bash
 mvn exec:java -D"exec.mainClass"="com.team.countries.CountryVerifier"
 mvn exec:java -D"exec.mainClass"="com.team.news.HeadlineVerifier"
+```
 
 ### 6. Inspect database manually
+```bash
 sqlite3 project.db
 .tables
 SELECT COUNT(*) FROM countries;
 SELECT COUNT(*) FROM country_headlines;
 .quit
+```
+## Phase 2 - Data API
 
+### 7. Run the Data API 
+```bash
+cd phase2/data-api
+mvn clean compile
+mvn exec:java
+```
+The Data API will run on `http://localhost:7001` with these endpoints:
+`GET /health` - Health check endpoint
+`GET /countries` - Returns first 25 countries as JSON
+
+### 8. Test the Data API
+```bash
+curl http://localhost:7001/health
+curl http://localhost:7001/countries
+```
+
+### 9. Start Apache APISIX gateway
+```bash
+docker-compose up -d
+```
+APISIX will run on `http://localhost:9080`
+
+### 10. Run all three APIs
+```bash
+# In separate terminals:
+cd phase2/data-api && mvn exec:java      # Port 7001
+cd phase2/class-api && mvn exec:java     # Port 7002  
+cd phase2/ui-api && mvn exec:java        # Port 7003
+```
+
+### 11. Configure APISIX routes
+Edit `phase2/conf/apisix.yaml` to set up routing between your APIs.
 
 After running these steps, you should see **countries** and **headlines** tables populated with API data, along with matching summary verification.
 
+For Phase 2 aggregation features:
+```bash
 mvn exec:java -D"exec.mainClass"="com.team.aggragated_county_news.CountryNews" -D"exec.args"="news_from_max_pop_country"
+```
