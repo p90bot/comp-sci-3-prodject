@@ -32,6 +32,8 @@ If you prefer another distribution (Adoptium, Azul, Oracle), install a Java 21 J
 comp-sci-3-project/
 ├── pom.xml
 ├── README.md
+├── README-phase2.md
+├── docker-compose.yml
 ├── sql/
 │   ├── create_countries.sql
 │   └── create_headlines.sql
@@ -48,9 +50,17 @@ comp-sci-3-project/
 │           ├── Headline.java
 │           ├── HeadlineLoader.java
 │           └── HeadlineVerifier.java
-├── data/
-│   └── summaries/   (auto-generated summary files)
-└── screenshots/     (proof for Phase 1 submission)
+├── phase2/
+│ ├── data-api/
+│ │ ├── pom.xml
+│ │ └── src/main/java/com/team/api/
+│ │ └── DataApi.java
+│ ├── class-api/
+│ ├── ui-api/
+│ └── conf/
+│ ├── config.yaml
+│ └── apisix.yaml
+└── project.db (SQLite database file - created by Phase 1)
 
 ## Quickstart
 
@@ -76,6 +86,15 @@ mvn exec:java -D"exec.mainClass"="com.team.db.RunSql" -D"exec.args"="sql/create_
 mvn exec:java -D"exec.mainClass"="com.team.countries.CountryLoader"
 mvn exec:java -D"exec.mainClass"="com.team.news.HeadlineLoader"
 ```
+
+### 4A. Copy database to data-api directory
+```bash
+cp project.db phase2/data-api/
+cd phase2/data-api
+mvn clean compile
+mvn exec:java
+```
+Important Note: The Data API currently coded (`DB_PATH = "./project.db"`) will only work if you copy the database to the `phase2/data-api/` directory before running step 4A.
 
 ### 5. Verify data
 ```bash
